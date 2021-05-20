@@ -3,12 +3,21 @@
 <?php 
 require_once "pdo.php";
 if(isset($_POST['todo_title'])){
-    $sql = "SELECT * FROM todolist";
-    $stmt = $pdo->query($sql);
-    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-        
-    }
+    $sql = "INSERT INTO todolist(todo_title) VALUES(:todo_title)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(
+        ':todo_title' => $_POST['todo_title']
+    ));
 }
+
+if(isset($_POST['delete'])){
+    $sql = "DELETE from todolist WHERE todo_id=:todo_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(
+        ':todo_id' => $_POST['todo_id']
+    ));
+}
+
 
 ?>
 
@@ -33,10 +42,14 @@ if(isset($_POST['todo_title'])){
  
 <ul>
 <?php
-$stmt = $pdo->query("SELECT todo_title FROM todolist");
+$stmt = $pdo->query("SELECT todo_id,todo_title FROM todolist");
 while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     echo "<li>";
         echo $row['todo_title'];
+        echo '<form method="post"><input type="hidden" '; 
+        echo 'name="todo_id" value="'.$row['todo_id'].' ">'."\n";
+        echo '<input type="submit" value="Delete" name="delete">';
+        echo "\n</form>\n";
     echo "</li>";
 }
 ?>
