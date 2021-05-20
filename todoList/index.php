@@ -3,8 +3,13 @@
 <?php 
 require_once "pdo.php";
 if(isset($_POST['todo_title'])){
-    print_r($_POST['todo_title'])
+    $sql = "SELECT * FROM todolist";
+    $stmt = $pdo->query($sql);
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+        
+    }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +30,15 @@ if(isset($_POST['todo_title'])){
     </body>
 </html>
 
-<pre>
-<?php echo $_POST['todo_title']; ?>
-</pre>
+ 
+<ul>
+<?php
+$stmt = $pdo->query("SELECT todo_title FROM todolist");
+while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+    echo "<li>";
+        echo $row['todo_title'];
+    echo "</li>";
+}
+?>
+</ul>
+
