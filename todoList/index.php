@@ -2,12 +2,19 @@
 
 <?php 
 require_once "pdo.php";
+$failure = false;
 if(isset($_POST['todo_title'])){
-    $sql = "INSERT INTO todolist(todo_title) VALUES(:todo_title)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(array(
-        ':todo_title' => $_POST['todo_title']
-    ));
+    if(strlen($_POST['todo_title']) < 1){
+        $failure = "Type your new todo in below box";
+    }else{
+        $todo_title = htmlentities($_POST['todo_title']);
+        $sql = "INSERT INTO todolist(todo_title) VALUES (:todo_title)";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(array(
+            ':todo_title' => $todo_title
+        ));
+    }
 }
 
 if(isset($_POST['delete'])){
@@ -32,6 +39,12 @@ if(isset($_POST['delete'])){
         <link rel="stylesheet" href="">
     </head>
     <body>
+    <?php
+
+    if ($failure !== false) {
+        echo '<p style="color: red;">'.htmlentities($failure)."</p>\n";
+    }
+?>
         <form method='POST'>
         <input type="text" name="todo_title" id="">
         <input type="submit" value="Add" >
