@@ -8,7 +8,7 @@
 <h1>Cool Application</h1>
 <?php 
     if ( isset($_SESSION["success"]) ) {
-        echo('<p style="color:green">'.$_SESSION["success"]."</p>\n");
+        echo('<p style="color:blue">'.$_SESSION["success"]."</p>\n");
         unset($_SESSION["success"]);
     }  
  
