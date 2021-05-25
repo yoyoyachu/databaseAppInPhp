@@ -12,8 +12,11 @@
         }else if($_POST['route'] == '4'){
             header("Location:pagefour.php");
             return;
-        }else{
+        }else if($_POST['route'] == '5'){
             header("Location:pagefive.php");
+            return;
+        }else{
+            header("Location:https://weather.yachna.net");
             return;
         }
     }

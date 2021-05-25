@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(isset($_POST['user']) && isset($_POST['user'])){
+    if(isset($_POST['user']) && isset($_POST['pw'])){
         unset($_SESSION['user']);
         if($_POST['pw'] == 'asd'){
             $_SESSION['user'] = $_POST['user'];
