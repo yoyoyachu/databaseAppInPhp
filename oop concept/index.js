@@ -1,16 +1,16 @@
-function PartyAnimal(){
+function PartyAnimal(nam){
     this.x = 0;
+    this.name = nam;
     this.party = function(){
         this.x += 10;
-        console.log(`${this.x} so far!!! `)
+        console.log(`${nam} = ${this.x}!!! `)
     }
-    console.log(` Whats my x ?????? ${this.x}!!! `)
 }
-let an = new PartyAnimal();
+let an = new PartyAnimal('Yachna');
+an.party();
+let bn = new PartyAnimal('Rishi');
+bn.party();
+let cn = new PartyAnimal('Niyu');
+cn.party();
 
-let i = 0;
-while(i < 10){
-    an.party();
-    i++;
-}
 
