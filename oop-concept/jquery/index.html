@@ -10,8 +10,11 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     </head>
     <body>
-        <h1>Jquery Demo</h1>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum, fugit!</p>
+        <h1 id='heading'>Jquery Demo</h1>
+        <img id="spinner" src="https://media0.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.webp?cid=ecf05e47hsac3jme61ta8r8c94j3j8izof94e4pm802gsb2z&rid=giphy.webp&ct=g" alt="" height="300px" width="300px">
+        <a href="#" onclick="$('#spinner').toggle(); return false;">Toggle</a>
+        <a href="#" onclick="$('#heading').css('background-color','red'); return false;">red</a>
+        <a href="#" onclick="$('#heading').css('background-color','green'); return false;">green</a>
         <script src="index.js" async defer></script>
     </body>
 </html>
